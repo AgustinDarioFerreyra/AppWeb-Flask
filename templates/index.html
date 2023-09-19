@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Bienvenido a mi aplicación Flask</h1>
+    <p>Esta es la página de inicio.</p>
+    <a class="btn btn-primary" href="{{ url_for('about') }}">Acerca de</a>
+    <a class="btn btn-info" href="{{ url_for('contact') }}">Contacto</a>
+</div>
+{% endblock %}
