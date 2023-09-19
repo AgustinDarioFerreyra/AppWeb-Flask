@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Calificaciones de {{ nombre }}</h1>
+    {% if calificaciones %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Clase</th>
+                    <th>Materia</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for calificacion in calificaciones %}
+                    <tr>
+                        <td>{{ calificacion['Clase'] }}</td>
+                        <td>{{ calificacion['Materia'] }}</td>
+                        <td>{{ calificacion['Calificación'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay calificaciones para {{ nombre }}</p>
+    {% endif %}
+</div>
+<a class="btn btn-primary" href="{{ url_for('index') }}">Volver a Inicio</a>
+{% endblock %}

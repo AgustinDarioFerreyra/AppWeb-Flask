@@ -15,6 +15,24 @@ bootstrap = Bootstrap(app)
 app.config["FLASH_MESSAGES"] = True
 app.config["FLASH_MESSAGES_CATEGORY"] = "message"
 
+listado = [
+    {"Nombre": 'Jose', "Clase": "Matemáticas", "Materia": "Álgebra", "Calificación": 85},
+    {"Nombre": 'Jose', "Clase": "Tecnología", "Materia": "Biología", "Calificación": 92},
+    {"Nombre": 'Jose', "Clase": "Historia", "Materia": "Geografía", "Calificación": 78},
+    {"Nombre": 'Jose', "Clase": "Arte", "Materia": "Pintura", "Calificación": 95},
+    {"Nombre": 'Jose', "Clase": "Música", "Materia": "Piano", "Calificación": 88},
+    {"Nombre": 'Jose', "Clase": "Deportes", "Materia": "Fútbol", "Calificación": 70},
+    {"Nombre": 'Jose', "Clase": "Idiomas", "Materia": "Inglés", "Calificación": 90},
+    {"Nombre": 'Jose', "Clase": "Ciencias", "Materia": "Física", "Calificación": 82},
+    {"Nombre": 'Pedro', "Clase": "Matemáticas", "Materia": "Álgebra", "Calificación": 78},
+    {"Nombre": 'Pedro', "Clase": "Tecnología", "Materia": "Biología", "Calificación": 73},
+    {"Nombre": 'Pedro', "Clase": "Historia", "Materia": "Geografía", "Calificación": 68},
+    {"Nombre": 'Pedro', "Clase": "Arte", "Materia": "Pintura", "Calificación": 91},
+    {"Nombre": 'Pedro', "Clase": "Música", "Materia": "Piano", "Calificación": 73},
+    {"Nombre": 'Pedro', "Clase": "Deportes", "Materia": "Fútbol", "Calificación": 79},
+    {"Nombre": 'Pedro', "Clase": "Idiomas", "Materia": "Inglés", "Calificación": 91},
+    {"Nombre": 'Pedro', "Clase": "Ciencias", "Materia": "Física", "Calificación": 59}
+]
 
 # Definir el formulario de contacto
 class ContactForm(FlaskForm):
@@ -48,6 +66,11 @@ def contact():
 
     return render_template("contact.html", form=form)
 
+@app.route('/calificaciones/<nombre>')
+def calificaciones(nombre):
+    # Filtrar la lista listado por el nombre proporcionado
+    calificaciones_filtradas = [calificacion for calificacion in listado if calificacion['Nombre'] == nombre]
+    return render_template('calificaciones.html', nombre=nombre, calificaciones=calificaciones_filtradas)
 
 if __name__ == "__main__":
     app.run(debug=True)
