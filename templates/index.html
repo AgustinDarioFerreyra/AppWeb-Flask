@@ -2,7 +2,11 @@
 
 {% block content %}
 <div class="container">
-    <h1>Bienvenido a mi aplicación Flask</h1>
+    {% if name is none %}
+        <h1>Bienvenido a mi aplicación Flask</h1>
+    {% else %}
+        <h1>Hola {{ name }}!</h1>
+    {% endif %}
     <p>Esta es la página de inicio.</p>
     <a class="btn btn-primary" href="{{ url_for('about') }}">Acerca de</a>
     <a class="btn btn-info" href="{{ url_for('contact') }}">Contacto</a>
